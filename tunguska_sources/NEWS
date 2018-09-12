@@ -1,0 +1,25 @@
+Since alpha 2:
+	* Assembler is less of a grammar nazi, allows uppercase labels.
+	* Epic speed increase. Order of magnitude 50-100% speed boost.
+	* New peripherial AGDP 'Auxiliary General Data Processor':
+		o  12 trit floating point arithmetics
+		o  Block operations
+	* Bug fixes galore.
+	* 3 color raster mode. Faster, but less versatile.
+Since alpha 1:
+	* Painting is done in a separate thread, which greatly
+		boosts performance (especially for systems with multiple cores)
+	* Reworked interrupt system (with queueing, instead of the old
+		"chuck it over the shoulder" way of dealing with unwanted
+		interrupts)
+	* Assembler is nearly completetely rewritten to rely on flex and bison
+		instead of the patchwork of code that was the old assembler. 
+		The assembly syntax is also modified, to be hopefully 
+		a lot clearer.
+	* Rudimentary vector graphics!
+	* Rudimentary raster graphics!
+	* Mouse support
+	* Fixes in a lot of previously defunct operations
+	* Virtual floppydisk support
+	* Zlib compression (output files are mostly zero anyways, so this will
+	  reduce size potentially hundredfold)

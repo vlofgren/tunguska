@@ -1,0 +1,108 @@
+/* Tunguska, ternary virtual machine
+ *
+ * Copyright (C) 2007,2008 Viktor Lofgren
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
+#ifndef system_h
+#define system_h
+
+#define SYS_IRQNO	0nDDDDDD
+#define SYS_IRQDATA	0nDDDDDC
+#define SYS_STACK	0nDDCDDD
+#define SYS_SCREEN	0nDDBDDD
+#define SYS_SCREEN_END	0nDD0DDD
+
+#define SYS_SCREEN_WIDTH 54
+#define SYS_SCREEN_HEIGHT 27
+
+#define SYS_RANDSTAT	0n44444B
+#define SYS_RANDOM	0n44444A
+#define SYS_CHARBUF	0n444440
+#define SYS_IRQFRQ	0n444441
+#define SYS_ISR		0n444442
+
+/*	A	  	  NNOOPP	
+ *	B	    	  NOOPPN */
+#define COP_XOR		0tN000NP // Regular boolean stuff
+#define COP_AND		0tNN00PN //
+#define COP_OR		0tN00PPP //
+/* Some ternary extensions */
+#define COP_XOR2	0tNPNPNP // Alternative XOR interpetation
+#define COP_ISBOOL	0tPNNNPP // True on true or false
+#define COP_TMUL	0tP000PN // Tritwise multiplication 
+				 //	(no carry)
+/* The stuff masks are made of */
+#define COP_LOVET	0tNNNNPN //
+#define COP_LOVEU	0tNNPNNN //
+#define COP_LOVEF	0tPNNNNN //
+#define COP_LIKET	0t0000P0 //
+#define COP_LIKEU	0t00P000 //
+#define COP_LIKEF	0tP00000 //
+#define COP_HATET	0tPPPPNP //
+#define COP_HATEU	0tPPNPPP //
+#define COP_HATEF	0tNPPPPP //
+#define COP_DISLIKET	0t0000N0 //
+#define COP_DISLIKEU	0t00N000 //
+#define COP_DISLIKEF	0tN00000 //
+
+/* Auto-redraw */
+#define VMR_TEXT	0t00000P // Text mode
+#define VMR_RASTER3	0t000PNP // 3 Color raster mode
+#define VMR_RASTER729	0t0000NP // 729 Color raster mode
+#define VMR_VECTOR	0t0000PP // Vector mode
+
+/* Set mode, no auto-redraw */
+#define VMM_TEXT	0t000000 // Text mode
+#define VMM_RASTER3	0t000PN0 // 3 Color raster mode
+#define VMM_RASTER729	0t0000N0 // 729 Color raster mode
+#define VMM_VECTOR	0t0000P0 // Vector mode
+
+struct machine_status {
+	char key;
+	char mouse_x;
+	char mouse_y;
+	char random;
+	char random_update;
+	char echo_input;
+	char video_mode_repaint_trit;
+};
+
+struct machine_status* get_ms();
+char random();
+
+struct vector {
+	char color;
+	char x;
+	char y;
+};
+
+extern char sys_irqno;
+extern char sys_irqdata;
+extern char sys_graphics_register;
+extern char sys_disk_op;
+extern int sys_agdp_registers[3];
+extern char sys_agdp_operation;
+extern char sys_text_buffer[27][54];
+extern char sys_raster_buffer[243][324];
+extern char sys_raster_buffer_tri[243][324];
+extern struct vector sys_vector_buffer[121];
+
+void malloc_init();
+void* malloc(int size);
+void free(void* mem);
+
+#endif

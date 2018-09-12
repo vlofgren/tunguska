@@ -1,0 +1,6 @@
+This is an experimental alternative memory image written in the 3cc
+language instead of in assembler.
+
+Make sure to use the latest CVS versions of tunguska and 3cc when you compile
+and run this, and also make sure to update the Makefile to point to the 
+locations of tg_assembler and 3cc correctly.

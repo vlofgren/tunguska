@@ -1,0 +1,9 @@
+This is the sourcecode for a memory image
+that adds functionality to tunguska. Assemble
+them by running
+
+> tg_assembler ram.asm
+
+And load it in tunguska by running
+
+> tunguska out.ternobj

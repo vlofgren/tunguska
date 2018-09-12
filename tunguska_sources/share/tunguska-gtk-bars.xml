@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- GtkUIManager data for the Tunguska GTK GUI -->
+<ui>
+	<menubar name="MenuBar">
+		<menu name="File" action="File">
+			<menuitem name="New" action="NewFileAction" />
+			<menuitem name="Open" action="OpenFileAction" />
+			<separator />
+			<menuitem name="Save" action="SaveFileAction" />
+			<menuitem name="SaveAs" action="SaveFileAsAction" />
+			<separator />
+			<menuitem name="Close" action="CloseAction" />
+			<menuitem name="Exit" action="ExitAction" />
+		</menu>
+		<menu name="Edit" action="Edit">
+			<menuitem name="Undo" action="UndoAction" />
+			<menuitem name="Redo" action="RedoAction" />
+			<separator />
+			<menuitem name="Cut" action="CutAction" />
+			<menuitem name="Copy" action="CopyAction" />
+			<menuitem name="Paste" action="PasteAction" />
+		</menu>
+		<menu name="Tunguska" action="Tunguska">
+			<menuitem name="Load Image" action="LoadImageAction" />
+			<menu name="Disk" action="Disk">
+				<menuitem name="Load Disk" action="LoadDiskAction" />
+				<menuitem name="Save Disk" action="SaveDiskAction" />
+			</menu>
+			<separator />
+			<menuitem name="Run" action="RunAction" />
+			<menuitem name="Step" action="StepAction" />
+		</menu>
+		<menu name="Debug" action="Debug">
+			<menuitem name="Processor Monitor" action="ProcMonAction" />
+			<menuitem name="Memory Inspector" action="MemInspectAction" />
+			<separator />
+			<menu name="Tracker" action="Tracker">
+				<menuitem name="Add Variable" action="AddVarAction" />
+			</menu>
+		</menu>
+		<menu name="Help" action="Help">
+			<menuitem name="About" action="AboutAction" />
+		</menu>
+	</menubar>
+	<toolbar name="ToolBar">
+		<placeholder name="File Control">
+			<toolitem name="New" action="NewFileAction" />
+			<toolitem name="Open" action="OpenFileAction" />
+			<toolitem name="Save" action="SaveFileAction" />
+			<separator />
+			<toolitem name="Undo" action="UndoAction" />
+			<toolitem name="Redo" action="RedoAction" />
+			<separator />
+		</placeholder>
+		<placeholder name="Run Control"> 
+			<toolitem name="Run" action="RunAction" />
+			<toolitem name="Step" action="StepAction" />
+			<toolitem name="Reset" action="ResetAction" />
+			<separator />
+			<toolitem name="Inspector" action="InspectorAction" />
+			<separator />
+		</placeholder>
+
+	</toolbar>
+</ui>
+
