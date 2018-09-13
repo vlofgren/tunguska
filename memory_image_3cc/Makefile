@@ -1,5 +1,5 @@
-ASSEMBLER=tg_assembler
-TRICC=tunguska_3cc
+ASSEMBLER=../tunguska_sources/tg_assembler
+TRICC=../tunguska_3cc/tunguska_3cc
 SOURCES=string.c stdio.c math.c main.c system.c graphics.c demos.c
 
 PP_SOURCES=$(SOURCES:.c=.ppc)
