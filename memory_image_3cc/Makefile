@@ -28,5 +28,4 @@ clean: clean_mini
 
 # Tell make how to preprocess sources
 .c.ppc:
-	cpp $< -o $@
-	sed -iE 's/^#.*$$//g' $@
+	cpp -P $< -o $@
