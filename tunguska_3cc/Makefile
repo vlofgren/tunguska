@@ -1,6 +1,6 @@
 APPNAME=tunguska_3cc
 CFLAGS=-Wall -g
-CXXFLAGS=-Wall -g
+CXXFLAGS=-Wall -g -std=c++98
 LDFLAGS=-dH -g
 all: $(APPNAME)
 parser.tab.cpp: parser.ypp
