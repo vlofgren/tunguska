@@ -113,6 +113,12 @@ source::source(const source& s) :
  *
  */
 unsigned int assembler::strtoopc(const char* s) const {
+	if (strcasecmp("DEBUG", s) == 0) {
+		return m.DEBUG;
+	}
+	if (strcasecmp("PAUSE", s) == 0) {
+		return m.PAUSE;
+	}
 	for(int i = -40; i <= 40; i++) {
 		if(strcasecmp(s, m.opcode_to_string(i)) == 0) {
 			return i;
