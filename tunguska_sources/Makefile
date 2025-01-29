@@ -1,7 +1,7 @@
 DEBUG=#-ggdb
 PKGLIBS=sdl
 LDFLAGS=`pkg-config ${PKGLIBS} --libs` -lz ${DEBUG} -ggdb 
-CXXFLAGS=`pkg-config ${PKGLIBS} --cflags` -O0 -funroll-loops -Wall ${DEBUG} -ggdb 
+CXXFLAGS=`pkg-config ${PKGLIBS} --cflags` -O0 -funroll-loops -Wall ${DEBUG} -ggdb  -std=c++98
 CFLAGS=${CXXFLAGS}
 LEX=flex
 #
@@ -16,6 +16,7 @@ tunguska: trit.o tryte.o machine.o tunguska.o display.o keyboard.o interrupt.o d
 parser.tab.cpp: parser.ypp
 	bison -d parser.ypp
 	mv parser.tab.hpp parser.h
+	sed -i 's/parser.tab.hpp/parser.h/g' parser.tab.cpp
 lex.yy.cc: scanner.l
 	flex -+ scanner.l
 tg_assembler: trit.o tryte.o machine.o interrupt.o parser.tab.o lex.yy.o assembler.o memory.o agdp.o

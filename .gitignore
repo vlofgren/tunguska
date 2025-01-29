@@ -1,0 +1,11 @@
+*.o
+*.ternobj
+tunguska_sources/tarser.tab.*
+tunguska_sources/tunguska
+tunguska_sources/tg_assembler
+memory_image_3cc/out.asm
+tunguska_3cc/lex.yy.cc
+tunguska_3cc/tunguska_3cc
+tunguska_sources/lex.yy.cc
+tunguska_sources/parser.h
+parser.tab.*
